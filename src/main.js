@@ -13,11 +13,11 @@ let timer
 const mb = menubar({
   dir: __dirname,
   browserWindow: {
-    height:400,
+    height: 400,
     resizable: false,
     width: 320,
     webPreferences: {
-      devTools: true,
+      // devTools: true,
       nodeIntegration: true
     }
   },

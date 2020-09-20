@@ -1,6 +1,6 @@
 {
   "name": "program-b",
-  "productName": "Program-B",
+  "productName": "Program B",
   "version": "1.0.0",
   "description": "A mac menubar application that can help control brightness based on active window being used.",
   "main": "src/main.js",
