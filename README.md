@@ -1,6 +1,6 @@
 # Program B
 <p align="center">
-  <img height="40px" src="src/IconTemplate@2x.png" alt="brightness icon"/>
+  <img height="40px" src="screenshots/program-b-black.png" alt="brightness icon"/>
   <br><br>
   <b>Control brightness of your screen based on the active window on the screen.</b><br>
   Available only for macOS for now.
@@ -9,7 +9,7 @@
 ------
 <br>
 
-![brightness icon](screenshots/plan-b.png "Program B")
+![brightness icon](screenshots/program-b.png "Program B")
 
 ### What does it do?
 Program B's helps you configire different brightness levels for apps in your system. And when a app becomes the active window, program-b checks if you have configured a specifig brightness level for that app and changes the brightness for you.
