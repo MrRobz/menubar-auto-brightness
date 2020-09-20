@@ -1,0 +1,64 @@
+{
+  "name": "program-b",
+  "productName": "Program-B",
+  "version": "1.0.0",
+  "description": "A mac menubar application that can help control brightness based on active window being used.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "MalayaliRobz",
+    "email": "robinphilipthomas@outlook.in"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "program_b"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "active-win": "^6.1.0",
+    "brightness": "^3.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "menubar": "^9.0.1",
+    "nouislider": "^14.6.2",
+    "ps-list": "^7.2.0"
+  },
+  "devDependencies": {
+    "electron-reloader": "^1.0.1",
+    "@electron-forge/cli": "6.0.0-beta.53",
+    "@electron-forge/maker-deb": "6.0.0-beta.53",
+    "@electron-forge/maker-rpm": "6.0.0-beta.53",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.53",
+    "@electron-forge/maker-zip": "6.0.0-beta.53",
+    "electron": "10.1.1"
+  }
+}

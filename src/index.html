@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Menubar Brightness</title>
+		<link rel="stylesheet" href="../node_modules/nouislider/distribute/nouislider.min.css">
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<div>
+			<div id="range"></div>
+			
+			<div class="top-divider"></div>
+
+			<div class="watching-processes-list">
+			</div>
+	
+			
+			<div class="process-selector-wrapper">
+				<button class="process-selector" onclick="openProcessSelector()">
+					Set Brightness per app. Click to add one.
+				</button>
+				<button class="btn pause-btn" id="pauseResumeServices" onclick="pauseResumeServices()">
+					Pause service
+				</button>
+				<div id="processDropdown" class="dropdown-content">
+					<div class="input">
+						<svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+							<path d="M4.50586 9.44238C5.48438 9.44238 6.38672 9.12598 7.125 8.59863L9.90234 11.376C10.0312 11.5049 10.2012 11.5693 10.3828 11.5693C10.7637 11.5693 11.0332 11.2764 11.0332 10.9014C11.0332 10.7256 10.9746 10.5615 10.8457 10.4326L8.08594 7.66699C8.66602 6.90527 9.01172 5.96191 9.01172 4.93652C9.01172 2.45801 6.98438 0.430664 4.50586 0.430664C2.0332 0.430664 0 2.45215 0 4.93652C0 7.41504 2.02734 9.44238 4.50586 9.44238ZM4.50586 8.46973C2.57227 8.46973 0.972656 6.87012 0.972656 4.93652C0.972656 3.00293 2.57227 1.40332 4.50586 1.40332C6.43945 1.40332 8.03906 3.00293 8.03906 4.93652C8.03906 6.87012 6.43945 8.46973 4.50586 8.46973Z" fill="#EBEBF5" fill-opacity="0.6"/>
+						</svg>
+						<input type="text" placeholder="Search" id="processSearch" onkeyup="filterProcess()">
+					</div>
+					<div class="dropdown-item-list">
+						<div class="dropdown-item">
+							one
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript" src="../node_modules/nouislider/distribute/nouislider.min.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>
