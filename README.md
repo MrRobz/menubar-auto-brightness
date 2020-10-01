@@ -1,4 +1,4 @@
-# Program Bright
+# Menubar Auto Brightness
 <p align="center">
   <img height="40px" src="screenshots/program-b-black.png" alt="brightness icon"/>
   <br><br>
@@ -12,7 +12,7 @@
 ![brightness icon](screenshots/program-b.png "Program Bright")
 
 ### What does it do?
-Program B's helps you configire different brightness levels for apps in your system. And when the respective app becomes the active window, 'menubar auto brightness' checks if you have configured specifig brightness level for that app and changes the brightness for you automatically.
+Menubar Auto Brightness helps you configire different brightness levels for apps in your system. And when the respective app becomes the active window, 'menubar auto brightness' checks if you have configured specifig brightness level for that app and changes the brightness for you automatically.
 
 ### How to configure
 Its dead simple!
