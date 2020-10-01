@@ -1,4 +1,4 @@
-# Program B
+# Program Bright
 <p align="center">
   <img height="40px" src="screenshots/program-b-black.png" alt="brightness icon"/>
   <br><br>
@@ -9,18 +9,19 @@
 ------
 <br>
 
-![brightness icon](screenshots/program-b.png "Program B")
+![brightness icon](screenshots/program-b.png "Program Bright")
 
 ### What does it do?
-Program B's helps you configire different brightness levels for apps in your system. And when the respective app becomes the active window, program-b checks if you have configured specifig brightness level for that app and changes the brightness for you automatically.
+Program B's helps you configire different brightness levels for apps in your system. And when the respective app becomes the active window, 'menubar auto brightness' checks if you have configured specifig brightness level for that app and changes the brightness for you automatically.
 
 ### How to configure
 Its dead simple!
-1. Launch the app (Program B).
-2. Click on "Set Beightness per app" button and select the app you wanna control beightness when active.
-3. Control beightlevel using the sliders.
+1. Launch the menubar auto brightness app by right-clicking on the app and clicking open.
+2. Click on the new menubar icon that appeared.
+3. Click on "Set Beightness per app" button and select the app you wanna control beightness when active.
+4. Control beightlevel using the sliders.
 
 ### Installation
-Download the latest version of **Program B** on the [Releases](https://github.com/MalayaliRobz/Program-B/releases) page.
+Download the latest version of **menubar auto brightness** on the [Releases](https://github.com/MalayaliRobz/menubar-auto-brightness/releases) page.
 
 

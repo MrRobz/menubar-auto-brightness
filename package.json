@@ -1,6 +1,6 @@
 {
-  "name": "program-b",
-  "productName": "Program B",
+  "name": "menubar-auto-brightness",
+  "productName": "Menubar Auto Brightness",
   "version": "1.0.0",
   "description": "A mac menubar application that can help control brightness based on active window being used.",
   "main": "src/main.js",
@@ -16,49 +16,42 @@
     "name": "MalayaliRobz",
     "email": "robinphilipthomas@outlook.in"
   },
+  "repository": "https://github.com/MalayaliRobz/menubar-auto-brightness",
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "program_b"
-          }
+      "packagerConfig": {
+        "icon": "src/assets/AppIcon.icns",
+        "extendInfo": {
+          "LSBackgroundOnly": true,
+          "LSUIElement": true
         },
+        "packageManager": "yarn"
+      },
+      "makers": [
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
             "darwin"
           ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
         }
       ]
     }
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "active-win": "^6.1.0",
     "brightness": "^3.0.0",
-    "electron-squirrel-startup": "^1.0.0",
+    "mac-screen-capture-permissions": "^1.1.0",
     "menubar": "^9.0.1",
     "nouislider": "^14.6.2",
     "ps-list": "^7.2.0"
   },
   "devDependencies": {
-    "electron-reloader": "^1.0.1",
     "@electron-forge/cli": "6.0.0-beta.53",
-    "@electron-forge/maker-deb": "6.0.0-beta.53",
-    "@electron-forge/maker-rpm": "6.0.0-beta.53",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.53",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.53",
     "@electron-forge/maker-zip": "6.0.0-beta.53",
-    "electron": "10.1.1"
+    "electron": "10.1.1",
+    "electron-reloader": "^1.0.1"
   }
 }

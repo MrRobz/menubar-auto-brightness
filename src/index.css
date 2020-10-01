@@ -10,7 +10,7 @@ body {
   -webkit-user-select: none;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 100%;;
 }
 
 .noUi-base, .noUi-target {
@@ -194,5 +194,11 @@ body {
 
 .pause-btn {
   margin-top: 5px;
+}
+
+.info {
+  color: #ecc94b;
+  display: grid;
+  place-items: center;
 }
 

@@ -1,6 +1,6 @@
 const noUiSlider = require('nouislider');
 const psList = require('ps-list');
-const { ipcRenderer, remote } = require('electron')
+const { ipcRenderer, remote } = require('electron');
 
 const macAppRegex = RegExp('Applications\/.*?.app\/Contents\/MacOS', 'i');
 
@@ -139,6 +139,11 @@ function pauseResumeServices() {
   }
 }
 
+function openSystemPreferences() {
+  debugger
+  ipcRenderer.send("openSystemPreferences")
+}
+
 async function init() {
   const el = document.getElementById('range');
 
@@ -154,7 +159,23 @@ async function init() {
   el.noUiSlider.on('update', handleChangeBrightness);
 
   ipcRenderer.send('requestInitialValue');
-  ipcRenderer.on('setInitialValue', (event, value) => el.noUiSlider.set(value));
+  ipcRenderer.on('setInitialValue', (event, {
+    defaultBrightness,
+    hasAccessibilityAccess,
+    hasScreenPermission
+  }) => {
+    el.noUiSlider.set(defaultBrightness);
+
+    if (!hasAccessibilityAccess || !hasScreenPermission) {
+      let infoDom = document.getElementById("info-message");
+      infoDom.innerHTML = `
+        <div style="margin-top: 50px; margin-bottom: 5px">
+          You need to give 'Accessibility' and 'Screen Recording' permissions, then restart app for this to work.
+        </div>
+        <button class="btn" onclick="openSystemPreferences()"> open System Preferences</button>
+      `
+    }
+  });
 }
 
 init()
