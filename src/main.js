@@ -1,14 +1,21 @@
 const { menubar } = require('menubar');
 const activeWin = require('active-win');
 const brightness = require('brightness');
-const { ipcMain } = require('electron')
+const {
+  hasScreenCapturePermission,
+  openSystemPreferences
+} = require('mac-screen-capture-permissions');
+const { ipcMain, systemPreferences } = require('electron');
 
 try {
 	require('electron-reloader')(module);
 } catch (_) {}
 
+
 let processToWatchBrightness = {};
-let timer
+let timer;
+let hasAccessibilityAccess = false;
+let hasScreenPermission = false;
 
 const mb = menubar({
   dir: __dirname,
@@ -27,13 +34,24 @@ const mb = menubar({
 const parseValue = (value, origin = 'range') => ((origin === 'range') ? value / 100 : value * 100);
 
 mb.on('ready', async () => {
-  processToWatchBrightness.globalBrightnessValue = await brightness.get();
-  timer = setInterval(brightnessMonitor, 1000);
+  hasScreenPermission = hasScreenCapturePermission();
+  if (hasScreenPermission) {
+    hasAccessibilityAccess = systemPreferences.isTrustedAccessibilityClient(true);
+  }
+  
+  if (hasAccessibilityAccess && hasScreenPermission) {
+    processToWatchBrightness.globalBrightnessValue = await brightness.get();
+    timer = setInterval(brightnessMonitor, 1000);
+  }
+
+  mb.app.dock.hide();
 });
 
 mb.on('after-create-window', () => {
   // mb.window.openDevTools()
 })
+
+mb.on('after-hide', () => { mb.app.hide() } )
 
 async function brightnessMonitor() {
     let activeWindow = await activeWin();
@@ -71,16 +89,37 @@ ipcMain.on('pauseService', async (event, pause) => {
   if (pause) {
     clearInterval(timer);
   } else {
+    hasAccessibilityAccess = systemPreferences.isTrustedAccessibilityClient(true);
+    hasScreenPermission = hasScreenCapturePermission();
+
     let value = parseValue(await brightness.get(), 'percentage');
-    event.sender.send('setInitialValue', value);
+    event.sender.send('setInitialValue', {
+      defaultBrightness: value,
+      hasAccessibilityAccess,
+      hasScreenPermission
+    });
     
     clearInterval(timer);
-    timer = setInterval(brightnessMonitor, 1000);
+
+    if (hasAccessibilityAccess && hasScreenPermission) {
+      timer = setInterval(brightnessMonitor, 1000);
+    }
   }
 })
 
 ipcMain.on('requestInitialValue',  async (event) => {
   const value = parseValue(await brightness.get(), 'percentage');
 
-  event.sender.send('setInitialValue', value);
+  event.sender.send('setInitialValue', {
+    defaultBrightness: value,
+    hasAccessibilityAccess,
+    hasScreenPermission
+  });
+})
+
+ipcMain.on('openSystemPreferences', (event) => {
+  hasScreenPermission = hasScreenCapturePermission();
+  hasAccessibilityAccess = systemPreferences.isTrustedAccessibilityClient(false);
+
+  openSystemPreferences();
 })
